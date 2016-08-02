@@ -37,6 +37,9 @@ LOCAL_OVERRIDES_PACKAGES := Camera2
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
+LOCAL_JAVA_LIBRARIES := \
+    org.slim.framework
+
 # If this is an unbundled build (to install separately) then include
 # the libraries in the APK, otherwise just put them in /system/lib and
 # leave them out of the APK
