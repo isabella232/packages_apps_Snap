@@ -513,8 +513,6 @@ public class CaptureModule extends BaseModule<CaptureUI> implements PhotoControl
         public void onError(CameraDevice cameraDevice, int error) {
             int id = Integer.parseInt(cameraDevice.getId());
             Log.e(TAG, "onError " + id + " " + error);
-            cameraDevice.close();
-            mCameraDevice[id] = null;
             mCameraOpenCloseLock.release();
             mCamerasOpened = false;
             if (null != mActivity) {
@@ -938,7 +936,7 @@ public class CaptureModule extends BaseModule<CaptureUI> implements PhotoControl
 
     public void reinit() {
         setCurrentMode();
-        mSettingsManager.reinit(getMainCameraId());
+        mSettingsManager.init();
     }
 
     public boolean isRefocus() {
@@ -1081,7 +1079,8 @@ public class CaptureModule extends BaseModule<CaptureUI> implements PhotoControl
             mState[id] = STATE_WAITING_TOUCH_FOCUS;
             mCaptureSession[id].capture(builder.build(), mCaptureCallback, mCameraHandler);
             setAFModeToPreview(id, mControlAFMode);
-            Message message = mCameraHandler.obtainMessage(CANCEL_TOUCH_FOCUS, mCameraId[id]);
+            Message message = mCameraHandler.obtainMessage(
+                    CANCEL_TOUCH_FOCUS, Integer.valueOf(mCameraId[id]), 0);
             mCameraHandler.sendMessageDelayed(message, CANCEL_TOUCH_FOCUS_DELAY);
         } catch (CameraAccessException e) {
             e.printStackTrace();
@@ -1973,6 +1972,7 @@ public class CaptureModule extends BaseModule<CaptureUI> implements PhotoControl
         } else {
             applyZoomAndUpdate(FRONT_ID);
         }
+        mUI.updateFaceViewCameraBound(mCropRegion[getMainCameraId()]);
     }
 
     private boolean isInMode(int cameraId) {

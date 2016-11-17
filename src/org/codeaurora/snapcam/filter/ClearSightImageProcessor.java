@@ -714,6 +714,8 @@ public class ClearSightImageProcessor {
                 mReprocessingRequests.add(request);
             } catch (CameraAccessException e) {
                 e.printStackTrace();
+            } catch (IllegalStateException e1) {
+                e1.printStackTrace();
             }
         }
 

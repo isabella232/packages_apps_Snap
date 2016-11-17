@@ -1296,6 +1296,10 @@ public class CaptureUI extends BaseUI implements PreviewGestures.SingleTapListen
         mFaceView.resume();
     }
 
+    public void updateFaceViewCameraBound(Rect cameraBound) {
+        mFaceView.setCameraBound(cameraBound);
+    }
+
     public void onStopFaceDetection() {
         if (mFaceView != null) {
             mFaceView.setBlockDraw(true);
