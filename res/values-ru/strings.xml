@@ -307,6 +307,7 @@
   <!-- Toast after enable Advanced Capture function to inform Continuous Shot has disabled -->
   <!-- Toast after enable 2k4k video quality to inform IS has disabled -->
   <!-- Toast after 2k4k video is enabled to inform SeeMore has been disabled -->
+  <string name="video_quality_4k_disable_SeeMore">Режим SeeMore не может быть включён во время записи 4К видео.</string>
   <!-- Toast after High Quality Noise Reduction has been enabled to show CDS is disabled -->
   <!-- Toast after High Quality Noise Reduction has been enabled to show TNR is disabled -->
   <!-- Toast after SeeMore has been enabled to show CDS is disabled -->
@@ -543,4 +544,6 @@ CHAR LIMIT = NONE] -->
   <!--  String shown when setting the homepage wallpaper in the background [CHAR LIMIT=NONE] -->
   <string name="setting_wallpaper">Установка обоев…</string>
   <!-- Menu, Video rotation labels [CHAR LIMIT=50] -->
+  <string name="remaining_photos_format">Осталось: %d</string>
+  <string name="makeup_video_size_limit">Функция Makeup работает только при записи видео в VGA.</string>
 </resources>
